@@ -82,7 +82,9 @@ void equalizeHist(cv::InputArray _src, cv::OutputArray _dst, cv::InputArray _mas
     Mat mask; 
     if (_mask.empty()) mask = Mat::ones(src.size(), CV_8UC1); 
     else mask = _mask.getMat(); 
-    CvMat _csrc = src, _cdst = dst, _cmask = mask;
+    CvMat _csrc = cvMat(src);
+    CvMat _cdst = cvMat(dst);
+    CvMat _cmask = cvMat(mask);
     cvEqualizeHist( &_csrc, &_cdst, &_cmask);
 }
 
